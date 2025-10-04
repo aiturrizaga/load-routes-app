@@ -1,1 +1,28 @@
-<p>customer-home-page works!</p>
+<div class="max-w-7xl mx-auto px-4 py-2 mt-4">
+
+    <ul class="w-full flex flex-col gap-4">
+        @for (customer of customers(); track $index) {
+        <li class="pb-3 sm:pb-4">
+            <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                <div class="shrink-0">
+                    <img class="size-14 rounded-full"
+                        [src]="'https://cdn.thesimpsonsapi.com/200' + customer.portrait_path" [alt]="customer.name">
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        {{customer.name}}
+                    </p>
+                    <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                        {{customer.occupation}}
+                    </p>
+                </div>
+                <a [routerLink]="[customer.id, 'details']"
+                    class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                    Ver Detalle
+                </a>
+            </div>
+        </li>
+        }
+    </ul>
+
+</div>
