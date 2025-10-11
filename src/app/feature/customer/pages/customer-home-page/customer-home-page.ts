@@ -2,16 +2,18 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { CustomerApi } from '../../services/customer-api';
 import { Customer } from '../../interfaces/customer';
 import { RouterLink } from '@angular/router';
+import { DatePipe, LowerCasePipe, UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-customer-home-page',
-  imports: [RouterLink],
+  imports: [RouterLink, DatePipe],
   templateUrl: './customer-home-page.html',
   styleUrl: './customer-home-page.scss'
 })
 export class CustomerHomePage implements OnInit {
   #customerApi = inject(CustomerApi);
   customers = signal<Customer[]>([]);
+  date = new Date();
 
   ngOnInit(): void {
     this.getCustomers();
