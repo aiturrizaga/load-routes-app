@@ -3,10 +3,12 @@ import { CustomerApi } from '../../services/customer-api';
 import { Customer } from '../../interfaces/customer';
 import { RouterLink } from '@angular/router';
 import { DatePipe, LowerCasePipe, UpperCasePipe } from '@angular/common';
+import { Highlight } from "../../../../core/directives/highlight";
+import { Button } from "../../../../core/directives/button";
 
 @Component({
   selector: 'app-customer-home-page',
-  imports: [RouterLink, DatePipe],
+  imports: [RouterLink, DatePipe, Highlight, Button],
   templateUrl: './customer-home-page.html',
   styleUrl: './customer-home-page.scss'
 })
