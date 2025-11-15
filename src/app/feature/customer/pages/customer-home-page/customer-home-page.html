@@ -1,5 +1,11 @@
 <div class="max-w-7xl mx-auto px-4 py-2 mt-4">
 
+    <div class="my-4">
+        <button type="button" class="bg-black text-white px-4 py-2.5 rounded-full cursor-pointer" (click)="fakeErrorBusiness()">
+            Error negocio
+        </button>
+    </div>
+
     <ul class="w-full flex flex-col gap-4">
         @for (customer of customers(); track $index) {
         <li class="pb-3 sm:pb-4">
