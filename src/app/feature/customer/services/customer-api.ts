@@ -16,4 +16,8 @@ export class CustomerApi {
   getById(customerId: string) {
     return this.#http.get<Customer>(`https://thesimpsonsapi.com/api/characters/${customerId}`)
   }
+
+  getData() {
+    return this.#http.get('https://b2b-api.wowperu.pe/ms-contractor/v1/contractors');
+  }
 }

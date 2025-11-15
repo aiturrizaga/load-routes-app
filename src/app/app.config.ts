@@ -2,15 +2,16 @@ import { ApplicationConfig, ErrorHandler, provideBrowserGlobalErrorListeners, pr
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { GlobalErrorHandler } from './core/errors/global-error-handler';
+import { httpErrorInterceptor } from './core/interceptors/http-error-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withComponentInputBinding()),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([httpErrorInterceptor])),
     {provide: ErrorHandler, useClass: GlobalErrorHandler}
   ]
 };

@@ -2,6 +2,7 @@ import { Component, inject, input, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Customer } from '../../interfaces/customer';
 import { HighlightPipe } from '../../../../core/pipes/highlight-pipe';
+import { CustomerApi } from '../../services/customer-api';
 
 @Component({
   selector: 'app-customer-detail-page',
@@ -11,13 +12,13 @@ import { HighlightPipe } from '../../../../core/pipes/highlight-pipe';
 })
 export class CustomerDetailPage {
   customer = input.required<Customer>();
+  customerApi = inject(CustomerApi);
 
   // #route = inject(ActivatedRoute);
   // customer = signal<Customer | null>(null);
 
-  // ngOnInit(): void {
-  //   const data: Customer = this.#route.snapshot.data['customer'];
-  //   this.customer.set(data);
-  // }
+  ngOnInit(): void {
+    this.customerApi.getData().subscribe();
+  }
 
 }
